@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.cmbDevices = new MetroFramework.Controls.MetroComboBox();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
+            this.btnIniciar = new MetroFramework.Controls.MetroButton();
+            this.Capturadora = new AForge.Controls.VideoSourcePlayer();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
@@ -44,23 +44,24 @@
             this.cmbDevices.TabIndex = 0;
             this.cmbDevices.UseSelectable = true;
             // 
-            // metroButton1
+            // btnIniciar
             // 
-            this.metroButton1.Location = new System.Drawing.Point(252, 42);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(75, 29);
-            this.metroButton1.TabIndex = 1;
-            this.metroButton1.Text = "Iniciar";
-            this.metroButton1.UseSelectable = true;
+            this.btnIniciar.Location = new System.Drawing.Point(252, 42);
+            this.btnIniciar.Name = "btnIniciar";
+            this.btnIniciar.Size = new System.Drawing.Size(75, 29);
+            this.btnIniciar.TabIndex = 1;
+            this.btnIniciar.Text = "Iniciar";
+            this.btnIniciar.UseSelectable = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
-            // videoSourcePlayer1
+            // Capturadora
             // 
-            this.videoSourcePlayer1.Location = new System.Drawing.Point(5, 77);
-            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
-            this.videoSourcePlayer1.Size = new System.Drawing.Size(328, 235);
-            this.videoSourcePlayer1.TabIndex = 2;
-            this.videoSourcePlayer1.Text = "videoSourcePlayer1";
-            this.videoSourcePlayer1.VideoSource = null;
+            this.Capturadora.Location = new System.Drawing.Point(5, 77);
+            this.Capturadora.Name = "Capturadora";
+            this.Capturadora.Size = new System.Drawing.Size(328, 235);
+            this.Capturadora.TabIndex = 2;
+            this.Capturadora.Text = "videoSourcePlayer1";
+            this.Capturadora.VideoSource = null;
             // 
             // metroLink1
             // 
@@ -77,8 +78,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 318);
             this.Controls.Add(this.metroLink1);
-            this.Controls.Add(this.videoSourcePlayer1);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.Capturadora);
+            this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.cmbDevices);
             this.Name = "Form1";
             this.Resizable = false;
@@ -90,8 +91,8 @@
         #endregion
 
         private MetroFramework.Controls.MetroComboBox cmbDevices;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
+        private MetroFramework.Controls.MetroButton btnIniciar;
+        private AForge.Controls.VideoSourcePlayer Capturadora;
         private MetroFramework.Controls.MetroLink metroLink1;
     }
 }

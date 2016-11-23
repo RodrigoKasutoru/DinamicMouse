@@ -17,6 +17,8 @@ namespace DinamicMouse
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         private FilterInfoCollection devices;
+        private VideoCaptureDevice videoCapture;
+        private MotionDetector Motion;
        
 
 
@@ -34,6 +36,29 @@ namespace DinamicMouse
                 cmbDevices.Items.Add(dev.Name);
             }
             cmbDevices.SelectedIndex = 0;
+
+            if (cmbDevices.Items.Count == 0)
+            {
+              btnIniciar.Enabled = false;
+            }
+
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            if (btnIniciar.Text == "Iniciar")
+            {
+                videoCapture = new VideoCaptureDevice(devices[cmbDevices.SelectedIndex].MonikerString);
+                Capturadora.VideoSource = videoCapture;
+                Capturadora.Start();
+                btnIniciar.Text = "Detener";
+            }
+            else
+            {
+                Capturadora.Stop();
+                btnIniciar.Text = "Iniciar";
+
+            }
         }
     }
 }
