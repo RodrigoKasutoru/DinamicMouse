@@ -11,6 +11,8 @@ using MetroFramework;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using AForge.Vision.Motion;
+using System.Speech;
+using System.Speech.Recognition;
 
 namespace DinamicMouse
 {
@@ -19,6 +21,7 @@ namespace DinamicMouse
         private FilterInfoCollection devices;
         private VideoCaptureDevice videoCapture;
         private MotionDetector Motion;
+        private SpeechRecognitionEngine escucha = new SpeechRecognitionEngine();
        
 
 
@@ -52,6 +55,11 @@ namespace DinamicMouse
                 Capturadora.VideoSource = videoCapture;
                 Capturadora.Start();
                 btnIniciar.Text = "Detener";
+                /*Activación de microfono*/
+                escucha.SetInputToDefaultAudioDevice();
+                escucha.LoadGrammar(new DictationGrammar());
+                escucha.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(lector);
+                escucha.RecognizeAsync(RecognizeMode.Multiple);
             }
             else
             {
@@ -60,5 +68,29 @@ namespace DinamicMouse
 
             }
         }
+        public void lector(object sender, SpeechRecognizedEventArgs e)
+        {
+            foreach (RecognizedWordUnit palabra in e.Result.Words)
+            {
+                switch (palabra.Text)
+                {
+                    case "click":
+                        label1.Text = palabra.Text;
+
+                        break;
+                    case "derecho":
+                        label1.Text = palabra.Text;
+
+                        break;
+                    case "doble":
+                        label1.Text = palabra.Text;
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
     }
 }
