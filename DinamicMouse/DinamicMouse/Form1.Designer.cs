@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.cmbDevices = new MetroFramework.Controls.MetroComboBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
-            // metroComboBox1
+            // cmbDevices
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(5, 42);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(241, 29);
-            this.metroComboBox1.TabIndex = 0;
-            this.metroComboBox1.UseSelectable = true;
+            this.cmbDevices.FormattingEnabled = true;
+            this.cmbDevices.ItemHeight = 23;
+            this.cmbDevices.Location = new System.Drawing.Point(5, 42);
+            this.cmbDevices.Name = "cmbDevices";
+            this.cmbDevices.Size = new System.Drawing.Size(241, 29);
+            this.cmbDevices.TabIndex = 0;
+            this.cmbDevices.UseSelectable = true;
             // 
             // metroButton1
             // 
@@ -79,7 +79,7 @@
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.videoSourcePlayer1);
             this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.cmbDevices);
             this.Name = "Form1";
             this.Resizable = false;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -89,7 +89,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox cmbDevices;
         private MetroFramework.Controls.MetroButton metroButton1;
         private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
         private MetroFramework.Controls.MetroLink metroLink1;

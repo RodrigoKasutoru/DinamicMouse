@@ -16,6 +16,10 @@ namespace DinamicMouse
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
+        private FilterInfoCollection devices;
+       
+
+
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +27,13 @@ namespace DinamicMouse
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            devices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
+            foreach (FilterInfo dev in devices)
+            {
+                cmbDevices.Items.Add(dev.Name);
+            }
+            cmbDevices.SelectedIndex = 0;
         }
     }
 }
