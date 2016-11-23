@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MaterialSkin;
 using MetroFramework;
+using AForge.Video;
+using AForge.Video.DirectShow;
+using AForge.Vision.Motion;
 
 namespace DinamicMouse
 {
