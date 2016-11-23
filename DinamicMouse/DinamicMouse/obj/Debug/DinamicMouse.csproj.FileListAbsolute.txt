@@ -23,3 +23,6 @@ C:\Users\Rodrigo\Videos\DinamicMouse\DinamicMouse\DinamicMouse\bin\Debug\AForge.
 C:\Users\Rodrigo\Videos\DinamicMouse\DinamicMouse\DinamicMouse\bin\Debug\AForge.Vision.xml
 C:\Users\Rodrigo\Videos\DinamicMouse\DinamicMouse\DinamicMouse\bin\Debug\AForge.xml
 C:\Users\Rodrigo\Videos\DinamicMouse\DinamicMouse\DinamicMouse\bin\Debug\AForge.Math.xml
+C:\Users\Swarm\Desktop\Github\DinamicMouse\DinamicMouse\DinamicMouse\bin\Debug\DinamicMouse.exe.config
+C:\Users\Swarm\Desktop\Github\DinamicMouse\DinamicMouse\DinamicMouse\obj\Debug\DinamicMouse.exe
+C:\Users\Swarm\Desktop\Github\DinamicMouse\DinamicMouse\DinamicMouse\obj\Debug\DinamicMouse.pdb

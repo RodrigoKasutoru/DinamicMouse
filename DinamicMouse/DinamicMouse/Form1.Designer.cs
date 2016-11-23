@@ -32,6 +32,8 @@
             this.btnIniciar = new MetroFramework.Controls.MetroButton();
             this.Capturadora = new AForge.Controls.VideoSourcePlayer();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbDevices
@@ -72,11 +74,31 @@
             this.metroLink1.Text = "Selecciona una camara web:";
             this.metroLink1.UseSelectable = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(292, 332);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = ". . .";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(241, 332);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Palabra:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 318);
+            this.ClientSize = new System.Drawing.Size(338, 355);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.Capturadora);
             this.Controls.Add(this.btnIniciar);
@@ -85,6 +107,7 @@
             this.Resizable = false;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -94,6 +117,8 @@
         private MetroFramework.Controls.MetroButton btnIniciar;
         private AForge.Controls.VideoSourcePlayer Capturadora;
         private MetroFramework.Controls.MetroLink metroLink1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
