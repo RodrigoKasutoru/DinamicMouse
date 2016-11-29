@@ -22,6 +22,7 @@ namespace DinamicMouse
         private VideoCaptureDevice videoCapture;
         private MotionDetector Motion;
         private SpeechRecognitionEngine escucha = new SpeechRecognitionEngine();
+        private float levelDetection;
 
         //Esto reemplaza a Cursor.Position en WinForms
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -57,6 +58,7 @@ namespace DinamicMouse
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Motion = new MotionDetector(new TwoFramesDifferenceDetector(), new MotionBorderHighlighting());
             devices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
             foreach (FilterInfo dev in devices)
@@ -132,6 +134,11 @@ namespace DinamicMouse
             escucha.RecognizeAsyncStop();
             btnIniciar.Text = "Iniciar";
             Application.Exit();
+        }
+
+        private void Capturadora_NewFrame(object sender, ref Bitmap image)
+        {
+            levelDetection = Motion.ProcessFrame(image);
         }
 
     }

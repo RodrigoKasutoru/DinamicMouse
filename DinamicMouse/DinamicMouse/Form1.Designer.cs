@@ -64,6 +64,7 @@
             this.Capturadora.TabIndex = 2;
             this.Capturadora.Text = "videoSourcePlayer1";
             this.Capturadora.VideoSource = null;
+            this.Capturadora.NewFrame += new AForge.Controls.VideoSourcePlayer.NewFrameHandler(this.Capturadora_NewFrame);
             // 
             // metroLink1
             // 
