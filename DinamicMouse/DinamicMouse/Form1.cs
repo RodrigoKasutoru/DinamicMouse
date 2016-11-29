@@ -98,6 +98,7 @@ namespace DinamicMouse
         {
             foreach (RecognizedWordUnit palabra in e.Result.Words)
             {
+                label1.Text = ". . .";
                 switch (palabra.Text)
                 {
                     case "izquierdo":
@@ -112,12 +113,25 @@ namespace DinamicMouse
                         break;
                     case "doble":
                         label1.Text = palabra.Text;
-
+                        LeftMouseClick(Cursor.Position.X, Cursor.Position.Y);
+                        LeftMouseClick(Cursor.Position.X, Cursor.Position.Y);
+                        break;
+                    case "cortada":
+                        MessageBox.Show("No soy Cortana, pero estoy en proceso de ser mejor que ella :v","Hola usuario",MessageBoxButtons.OK);
                         break;
                     default:
+                        label1.Text = palabra.Text;
                         break;
                 }
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Capturadora.Stop();
+            escucha.RecognizeAsyncStop();
+            btnIniciar.Text = "Iniciar";
+            Application.Exit();
         }
 
     }
