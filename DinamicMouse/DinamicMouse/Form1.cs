@@ -24,6 +24,10 @@ namespace DinamicMouse
         private SpeechRecognitionEngine escucha = new SpeechRecognitionEngine();
         private float levelDetection;
 
+        Rectangle A1,A2,A3,A4;
+    
+
+
         //Esto reemplaza a Cursor.Position en WinForms
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool SetCursorPos(int x, int y);
@@ -87,12 +91,17 @@ namespace DinamicMouse
                 escucha.LoadGrammar(new DictationGrammar());
                 escucha.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(lector);
                 escucha.RecognizeAsync(RecognizeMode.Multiple);
+                timer1.Interval = 10;
+                timer1.Start();
+
+            
             }
             else
             {
                 Capturadora.Stop();
                 escucha.RecognizeAsyncStop();
                 btnIniciar.Text = "Iniciar";
+                timer1.Stop();
 
             }
         }
@@ -139,6 +148,25 @@ namespace DinamicMouse
         private void Capturadora_NewFrame(object sender, ref Bitmap image)
         {
             levelDetection = Motion.ProcessFrame(image);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Pen Marco = new Pen(Brushes.Blue, 2);
+            Graphics cuadrado;
+            A1 = new Rectangle(0, 0, 328, 25);
+            cuadrado = Capturadora.CreateGraphics();
+            cuadrado.DrawRectangle(Marco, A1);
+            A2 = new Rectangle(0, 26, 25, 180);
+            cuadrado = Capturadora.CreateGraphics();
+            cuadrado.DrawRectangle(Marco, A2);
+            A2 = new Rectangle(308, 26, 25, 180);
+            cuadrado = Capturadora.CreateGraphics();
+            cuadrado.DrawRectangle(Marco, A2);
+            A4 = new Rectangle(0, 208, 328, 25);
+            cuadrado = Capturadora.CreateGraphics();
+            cuadrado.DrawRectangle(Marco, A4);
+         
         }
 
     }

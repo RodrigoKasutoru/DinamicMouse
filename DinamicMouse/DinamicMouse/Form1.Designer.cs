@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbDevices = new MetroFramework.Controls.MetroComboBox();
             this.btnIniciar = new MetroFramework.Controls.MetroButton();
             this.Capturadora = new AForge.Controls.VideoSourcePlayer();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // cmbDevices
@@ -93,6 +95,10 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Palabra:";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +127,7 @@
         private MetroFramework.Controls.MetroLink metroLink1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
