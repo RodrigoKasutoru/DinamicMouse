@@ -22,8 +22,33 @@ namespace DinamicMouse
         private VideoCaptureDevice videoCapture;
         private MotionDetector Motion;
         private SpeechRecognitionEngine escucha = new SpeechRecognitionEngine();
-       
 
+        //Esto reemplaza a Cursor.Position en WinForms
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern bool SetCursorPos(int x, int y);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        public const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        public const int MOUSEEVENTF_LEFTUP = 0x04;
+        public const int MOUSEEVENTF_RIGHTDOWN = 0X08;
+        public const int MOUSEEVENTF_RIGHTUP = 0X10;
+
+        //Esto simula un click con el botón izquierdo del ratón
+        public static void LeftMouseClick(int xpos, int ypos)
+        {
+            SetCursorPos(xpos, ypos);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+        }
+
+        public static void RightMouseClick(int xpos, int ypos)
+        {
+            SetCursorPos(xpos, ypos);
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, xpos, ypos, 0, 0);
+        }
 
         public Form1()
         {
@@ -64,6 +89,7 @@ namespace DinamicMouse
             else
             {
                 Capturadora.Stop();
+                escucha.RecognizeAsyncStop();
                 btnIniciar.Text = "Iniciar";
 
             }
@@ -72,24 +98,40 @@ namespace DinamicMouse
         {
             foreach (RecognizedWordUnit palabra in e.Result.Words)
             {
+                label1.Text = ". . .";
                 switch (palabra.Text)
                 {
-                    case "click":
+                    case "izquierdo":
                         label1.Text = palabra.Text;
+                        LeftMouseClick(Cursor.Position.X,Cursor.Position.Y);
 
                         break;
                     case "derecho":
                         label1.Text = palabra.Text;
+                        RightMouseClick(Cursor.Position.X, Cursor.Position.Y);
 
                         break;
                     case "doble":
                         label1.Text = palabra.Text;
-
+                        LeftMouseClick(Cursor.Position.X, Cursor.Position.Y);
+                        LeftMouseClick(Cursor.Position.X, Cursor.Position.Y);
+                        break;
+                    case "cortada":
+                        MessageBox.Show("No soy Cortana, pero estoy en proceso de ser mejor que ella :v","Hola usuario",MessageBoxButtons.OK);
                         break;
                     default:
+                        label1.Text = palabra.Text;
                         break;
                 }
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Capturadora.Stop();
+            escucha.RecognizeAsyncStop();
+            btnIniciar.Text = "Iniciar";
+            Application.Exit();
         }
 
     }
